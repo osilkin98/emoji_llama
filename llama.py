@@ -38,9 +38,11 @@ def post_llamas():
         selected_emoji = emojis.pop(random.randrange(0, len(emojis)))
         status = api.PostUpdate(llama.replace('?', selected_emoji))
         print(status.text)
+
         # the llama should sleep before posting again
-        time.sleep(20)
-        break   # debug break for now, replace on rPI
+        ONE_HOUR = 3600
+        ONE_DAY = ONE_HOUR * 24
+        time.sleep(random.randrange(ONE_HOUR, ONE_DAY)) 
 
     print('enough llamas')
 
